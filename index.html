@@ -1,0 +1,348 @@
+<html>
+<head>
+    <style>
+     
+     * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.post {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.post-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-content {
+    flex: 1;
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.post-text {
+    font-size: 16px;
+    color: #555;
+}
+
+.comments {
+    margin-left: 110px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.comment-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-text {
+    font-size: 14px;
+    color: #555;
+}
+
+.reply {
+    margin-left: 60px;
+}
+
+.reply-button {
+    display: inline-block;
+    background: #eee;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reply-input {
+    display: none;
+    margin-top: 10px;
+}
+
+.reply-input textarea {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    resize: none;
+}
+
+.reply-input button {
+    display: inline-block;
+    background: #eee;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    /* Estilos para pantallas pequeñas */
+    .container {
+        width: 100%;
+    }
+
+    .post {
+        flex-direction: column;
+    }
+
+    .post-image {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .comments {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Estilos para pantallas grandes */
+    .container {
+        width: 80%;
+    }
+
+    .post {
+        flex-direction: row;
+    }
+
+    .post-image {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+    }
+
+    .comments {
+        margin-left: 110px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="post">
+            <img src="perfil3.jpeg" alt="Post image" class="post-image">
+            <div class="post-content">
+                <div class="post-title">¿Qué te parece este simulador de comentarios?</div>
+                <div class="post-text">Este es un ejemplo de un sistema de comentarios de una página web que tiene una imagen y varios comentarios que se pueden responder y te responden con respuestas aleatorias. El estilo de la página es creativo y cada comentario tiene una imagen de perfil.</div>
+            </div>
+        </div>
+        <div class="comments">
+            <div class="comment">
+                <img src="perfil1.jpg" alt="Comment image 1" class="comment-image">
+                <div class="comment-content">
+                    <div class="comment-name">Juan Pérez</div>
+                    <div class="comment-text">Me parece muy interesante y divertido. ¿Cómo lo hiciste?</div>
+                    <div class="reply-button">Responder</div>
+                    <div class="reply-input">
+                        <textarea placeholder="Escribe tu respuesta..."></textarea>
+                        <button>Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="comment reply">
+                <img src="perfil2.jpeg" alt="Comment image 2" class="comment-image">
+                <div class="comment-content">
+                    <div class="comment-name">yo</div>
+                    <div class="comment-text">Lo hice con HTML y CSS, usando un poco de JavaScript para generar respuestas aleatorias.</div>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="perfil4.jpeg" alt="Comment image 3" class="comment-image">
+                <div class="comment-content">
+                    <div class="comment-name">María García</div>
+                    <div class="comment-text">Me gusta el diseño de la página, es muy original y atractivo.</div>
+                    <div class="reply-button">Responder</div>
+                    <div class="reply-input">
+                        <textarea placeholder="Escribe tu respuesta..."></textarea>
+                        <button>Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="comment reply">
+                <img src="perfil.jpeg" alt="Comment image 4" class="comment-image">
+                <div class="comment-content">
+                    <div class="comment-name">mike wazowski</div>
+                    <div class="comment-text">Muchas gracias, me alegra que te guste.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Seleccionar todos los botones de responder
+        let replyButtons = document.querySelectorAll(".reply-button");
+
+        // Añadir un evento de clic a cada botón
+        replyButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                // Mostrar u ocultar el input de respuesta según el estado actual
+                let replyInput = button.nextElementSibling;
+                if (replyInput.style.display === "none") {
+                    replyInput.style.display = "block";
+                } else {
+                    replyInput.style.display = "none";
+                }
+            });
+        });
+
+       // Seleccionar todos los botones de enviar
+let sendButtons = document.querySelectorAll(".reply-input button");
+
+// Añadir un evento de clic a cada botón
+sendButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        // Obtener el valor del textarea
+        let textarea = button.previousElementSibling;
+        let replyText = textarea.value;
+
+        // Si el texto no está vacío, crear un nuevo comentario de respuesta
+        if (replyText !== "") {
+            // Crear un elemento div con la clase comment y la clase reply
+            let newComment = document.createElement("div");
+            newComment.classList.add("comment");
+            newComment.classList.add("reply");
+
+            // Crear un elemento img con la fuente comment-image-2.jpg y la clase comment-image
+            let newImage = document.createElement("img");
+            newImage.src = "perfil2.jpeg";
+            newImage.alt = "Comment image 2";
+            newImage.classList.add("comment-image");
+
+            // Crear un elemento div con la clase comment-content
+            let newContent = document.createElement("div");
+            newContent.classList.add("comment-content");
+
+            // Crear un elemento div con la clase comment-name y el texto Bing
+            let newName = document.createElement("div");
+            newName.classList.add("comment-name");
+            newName.textContent = "yo";
+
+            // Crear un elemento div con la clase comment-text y el texto del textarea
+            let newText = document.createElement("div");
+            newText.classList.add("comment-text");
+            newText.textContent = replyText;
+
+            // Añadir los elementos creados al div comment-content
+            newContent.appendChild(newName);
+            newContent.appendChild(newText);
+
+            // Añadir los elementos creados al div comment
+            newComment.appendChild(newImage);
+            newComment.appendChild(newContent);
+
+            // Añadir el nuevo comentario al final de los comentarios
+            let comments = document.querySelector(".comments");
+            comments.appendChild(newComment);
+
+            // Limpiar el textarea
+            textarea.value = "";
+
+            // Ocultar el input de respuesta
+            let replyInput = button.parentElement;
+            replyInput.style.display = "none";
+
+            // Crear una respuesta aleatoria predeterminada
+            let randomReply = createRandomReply();
+
+            // Crear un nuevo comentario de respuesta con la respuesta aleatoria
+            let newReply = document.createElement("div");
+            newReply.classList.add("comment");
+            newReply.classList.add("reply");
+
+            // Crear un elemento img con la fuente comment-image-1.jpg y la clase comment-image
+            let newReplyImage = document.createElement("img");
+            newReplyImage.src = "perfil4.jpeg";
+            newReplyImage.alt = "Comment image 1";
+            newReplyImage.classList.add("comment-image");
+
+            // Crear un elemento div con la clase comment-content
+            let newReplyContent = document.createElement("div");
+            newReplyContent.classList.add("comment-content");
+
+            // Crear un elemento div con la clase comment-name y el texto Juan Pérez
+            let newReplyName = document.createElement("div");
+            newReplyName.classList.add("comment-name");
+            newReplyName.textContent = "Maria García";
+
+            // Crear un elemento div con la clase comment-text y el texto de la respuesta aleatoria
+            let newReplyText = document.createElement("div");
+            newReplyText.classList.add("comment-text");
+            newReplyText.textContent = randomReply;
+
+            // Añadir los elementos creados al div comment-content
+            newReplyContent.appendChild(newReplyName);
+            newReplyContent.appendChild(newReplyText);
+
+            // Añadir los elementos creados al div comment
+            newReply.appendChild(newReplyImage);
+            newReply.appendChild(newReplyContent);
+
+            // Añadir el nuevo comentario al final de los comentarios
+            comments.appendChild(newReply);
+        }
+    });
+});
+
+// Crear una función que devuelva una respuesta aleatoria predeterminada
+function createRandomReply() {
+    // Crear un arreglo con algunas respuestas posibles
+    let replies = [
+        "Gracias por tu respuesta, me parece muy interesante.",
+        "No estoy de acuerdo con lo que dices, creo que estás equivocado.",
+        "¿Podrías explicarme mejor lo que quieres decir?",
+        "Me gustaría saber más sobre tu opinión, ¿qué te lleva a pensar así?",
+        "Creo que tienes razón, es una buena forma de ver las cosas."
+    ];
+
+    // Elegir una respuesta al azar del arreglo
+    let index = Math.floor(Math.random() * replies.length);
+    let reply = replies[index];
+
+    // Devolver la respuesta elegida
+    return reply;
+}
+
+    </script>
+</body>
+</html>
